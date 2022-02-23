@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "889900499985",
+    "project_id": "test-953ef",
+    "storage_bucket": "test-953ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889900499985:android:ce66e52f271a7f99e2ddb0",
+        "android_client_info": {
+          "package_name": "org.techtown.newandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889900499985-9o094hmkeaa3aiemj0evabbs2vimjji5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.techtown.newandroid",
+            "certificate_hash": "94bcccc8ac5f534824543b20979bcf74ddf2d889"
+          }
+        },
+        {
+          "client_id": "889900499985-bcopp6bfgh3b9nmj3b2tasdqb2ppqio0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCowptEc6OmuceywL3dQZG3UA_0SkddCow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889900499985-bcopp6bfgh3b9nmj3b2tasdqb2ppqio0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

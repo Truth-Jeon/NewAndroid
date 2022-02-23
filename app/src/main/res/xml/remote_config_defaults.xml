@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- START xml_defaults -->
+<defaultsMap>
+    <entry>
+        <key>new_app_version</key>
+        <value>1</value>
+    </entry>
+    <entry>
+        <key>toolbar_img_count</key>
+        <value>15</value>
+    </entry>
+</defaultsMap>
