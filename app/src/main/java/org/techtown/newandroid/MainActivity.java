@@ -90,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
                                             Toast.makeText(getApplicationContext(), "이미지페이지로 넘어갑니다.", Toast.LENGTH_LONG).show();
-//                                            Intent intent = new Intent(MainActivity.this, TestActivity.class);
-//                                            startActivity(intent);
+                                            Intent intent = new Intent(MainActivity.this, UploadActivity.class);
+                                            startActivity(intent);
                                         }
                             });
                             login_builder.setNegativeButton("아니오",
