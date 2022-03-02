@@ -1,6 +1,8 @@
 package org.techtown.newandroid;
 
 import java.util.HashMap;
+import java.util.List;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -20,9 +22,20 @@ public interface RetrofitInterface {
 
     @Multipart
     @POST("/single")
-    Call<ResponseBody> singleImage(@Part MultipartBody.Part part, @Part("somedata") RequestBody requestBody);
+    Call<String> singleImage(@Part MultipartBody.Part file);
 
     @Multipart
     @POST("/multiple")
-    Call<ResponseBody> multiImage(@Part MultipartBody.Part file1, @Part MultipartBody.Part file2, @Part MultipartBody.Part file3);
+    Call<ResponseBody> multiImage(@Part MultipartBody.Part image, @Part("images") RequestBody name);
+
+
+
+//    @Multipart
+//    @POST("/multiple")
+//    Call<ResponseBody> multiImage(@Part MultipartBody.Part file1, @Part MultipartBody.Part file2, @Part MultipartBody.Part file3);
+
+//    @Multipart
+//    @POST("/multiple")
+//    Call<ResponseBody> multiImage(@Part List<MultipartBody.Part> files);
+
 }

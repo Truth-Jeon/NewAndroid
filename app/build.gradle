@@ -40,9 +40,6 @@ dependencies {
     //레트로핏
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-//    implementation 'androidx.annotation:annotation:1.2.0'
-//    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
-//    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
     //이미지라이브러리 피카소
     implementation 'com.squareup.picasso:picasso:2.71828'

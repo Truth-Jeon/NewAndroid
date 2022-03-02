@@ -62,7 +62,7 @@
 <!--        app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView"
         android:layout_width="311dp"
         android:layout_height="407dp"
         android:layout_marginStart="45dp"
@@ -81,7 +81,7 @@
         android:layout_marginTop="16dp"
         android:text="UPLOAD"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/select_btn"
@@ -91,7 +91,7 @@
         android:layout_marginEnd="60dp"
         android:text="SELECT"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/textView"

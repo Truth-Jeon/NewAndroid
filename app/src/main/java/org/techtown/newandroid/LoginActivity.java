@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity {
 
     private String user_id;
     private String user_pw;

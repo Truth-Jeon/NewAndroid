@@ -21,21 +21,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-
-    private Retrofit retrofit;
+    private Retrofit retrofit = ClientApi.getClientApi();
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.168.0.174:3001";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
         findViewById(R.id.login_btn).setOnClickListener(new View.OnClickListener(){
