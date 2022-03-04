@@ -12,23 +12,28 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,11 +53,11 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class UploadActivity extends AppCompatActivity implements View.OnClickListener {
+    private String sdcardPath;
     private Retrofit retrofit = ClientApi.getClientApi();
     private RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
     String filePath = "";
-//    private final int PICK_IMAGE = 1111;
-    Button upload_btn, select_btn;
+    Button upload_btn, select_btn, capture_btn;
     ImageView imageView;
     TextView textView;
     Bitmap mBitmap;
@@ -61,7 +66,6 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     private ArrayList<String> permissions = new ArrayList<>();
     private final static int ALL_PERMISSIONS_RESULT = 107;
     private final static int IMAGE_RESULT = 200;
-//    public static final String PROGRESS_UPDATE = "progress_update";
 
 
     @Override
@@ -71,10 +75,15 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
         upload_btn = findViewById(R.id.upload_btn);
         select_btn = findViewById(R.id.select_btn);
+        capture_btn = findViewById(R.id.select_btn);
         imageView = findViewById(R.id.imageView);
         textView = findViewById(R.id.textView);
         upload_btn.setOnClickListener(this);
         select_btn.setOnClickListener(this);
+        capture_btn.setOnClickListener(this);
+
+        //== 부사장님 숙제로 mBitmap을 임의의 경로의 파일로 지정함. 원래는 없어도 되는 코드. ==/
+        mBitmap = BitmapFactory.decodeFile("/sdcard/TC_iot001.png");
 
         askPermission();
     }
@@ -117,25 +126,28 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void multiImage() {
-        try{
-            File filesDir = getApplicationContext().getFilesDir();
-            File file = new File(filesDir, "image" + ".png");
+        try {
+//            File filesDir = getApplicationContext().getFilesDir();
+//            File file = new File(filesDir, "image" + ".png");
+//
+//            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//            mBitmap.compress(Bitmap.CompressFormat.PNG, 0, bos);
+//            byte[] bitmapdata = bos.toByteArray();
+//
+//
+//            FileOutputStream fos = new FileOutputStream(file);
+//            fos.write(bitmapdata);
+//            fos.flush();
+//            fos.close();
 
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            mBitmap.compress(Bitmap.CompressFormat.PNG, 0, bos);
-            byte[] bitmapdata = bos.toByteArray();
+            //=== sdcard에서 특정 이미지 지정하여 이미지 파일 select ===//
+            File file = new File("/sdcard/TC_iot001.png");
 
-
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(bitmapdata);
-            fos.flush();
-            fos.close();
-
-
-            RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), file);
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 4;
+            RequestBody reqFile = RequestBody.create(MediaType.parse("TC_iot001/*"), file);
             MultipartBody.Part body = MultipartBody.Part.createFormData("images", file.getName(), reqFile);
             RequestBody name = RequestBody.create(MediaType.parse("text/plain"), "images");
-
             Call<ResponseBody> req = retrofitInterface.multiImage(body, name);
             req.enqueue(new Callback<ResponseBody>() {
                 @Override
@@ -157,11 +169,12 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                     t.printStackTrace();
                 }
             });
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        } catch(Exception e) {
             e.printStackTrace();
         }
     }
@@ -194,7 +207,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
-        galleryIntent.setType("image/*");
+        galleryIntent.setType("sdcard/screen.png");
         List<ResolveInfo> listGallery = packageManager.queryIntentActivities(galleryIntent, 0);
         for(ResolveInfo res : listGallery) {
             Intent intent = new Intent(galleryIntent);
@@ -267,7 +280,14 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.select_btn:
-                startActivityForResult(selectImage(), IMAGE_RESULT);
+//                startActivityForResult(selectImage(), IMAGE_RESULT);
+                imageView.setImageBitmap(mBitmap);
+                break;
+
+            case R.id.capture_btn:
+                Intent intent = new Intent(UploadActivity.this, CaptureActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }
