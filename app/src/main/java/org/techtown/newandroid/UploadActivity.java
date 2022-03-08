@@ -57,7 +57,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     private Retrofit retrofit = ClientApi.getClientApi();
     private RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
     String filePath = "";
-    Button upload_btn, select_btn, capture_btn;
+    Button upload_btn, select_btn;
     ImageView imageView;
     TextView textView;
     Bitmap mBitmap;
@@ -75,12 +75,10 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
         upload_btn = findViewById(R.id.upload_btn);
         select_btn = findViewById(R.id.select_btn);
-        capture_btn = findViewById(R.id.select_btn);
         imageView = findViewById(R.id.imageView);
         textView = findViewById(R.id.textView);
         upload_btn.setOnClickListener(this);
         select_btn.setOnClickListener(this);
-        capture_btn.setOnClickListener(this);
 
         //== 부사장님 숙제로 mBitmap을 임의의 경로의 파일로 지정함. 원래는 없어도 되는 코드. ==/
         mBitmap = BitmapFactory.decodeFile("/sdcard/TC_iot001.png");
@@ -282,11 +280,6 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.select_btn:
 //                startActivityForResult(selectImage(), IMAGE_RESULT);
                 imageView.setImageBitmap(mBitmap);
-                break;
-
-            case R.id.capture_btn:
-                Intent intent = new Intent(UploadActivity.this, CaptureActivity.class);
-                startActivity(intent);
                 break;
         }
     }

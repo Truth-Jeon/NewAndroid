@@ -2,10 +2,17 @@ package org.techtown.newandroid;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         retrofitInterface = retrofit.create(RetrofitInterface.class);
+        Button capture_btn = (Button)findViewById(R.id.capture_btn);
 
         findViewById(R.id.login_btn).setOnClickListener(new View.OnClickListener(){
             @Override
@@ -41,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 handleRegisterDialog();
+            }
+        });
+
+        capture_btn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CaptureActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -158,5 +173,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }

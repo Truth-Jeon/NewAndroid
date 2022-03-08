@@ -3,10 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/and_test/NewAndroid/app/src/main/res/layout/activity_capture.xml" value="0.24728260869565216" />
+        <entry key="..\:/and_test/NewAndroid/app/src/main/res/layout/activity_capture.xml" value="0.10400000000000001" />
         <entry key="..\:/and_test/NewAndroid/app/src/main/res/layout/activity_login.xml" value="0.23333333333333334" />
+        <entry key="..\:/and_test/NewAndroid/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/and_test/NewAndroid/app/src/main/res/layout/activity_register.xml" value="0.14427083333333332" />
         <entry key="..\:/and_test/NewAndroid/app/src/main/res/layout/activity_test.xml" value="0.1125" />
         <entry key="..\:/and_test/NewAndroid/app/src/main/res/layout/activity_upload.xml" value="0.23333333333333334" />
+        <entry key="..\:/and_test/NewAndroid/app/src/main/res/layout/fragement_screen_capture.xml" value="0.2246376811594203" />
+        <entry key="..\:/and_test/NewAndroid/app/src/main/res/layout/fragment_screen_capture.xml" value="0.2246376811594203" />
+        <entry key="..\:/and_test/NewAndroid/app/src/main/res/menu/main.xml" value="0.1875" />
       </map>
     </option>
   </component>
